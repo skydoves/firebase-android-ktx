@@ -28,7 +28,7 @@ firebaseKtx = "0.1.0"
 
 [libraries]
 #...
-firebase-database-ktx = { module = "com.github.skydoves:firebase-android-ktx", version.ref = "firebaseKtx" }
+firebase-database-ktx = { module = "com.github.skydoves:firebase-database-ktx", version.ref = "firebaseKtx" }
 ```
 
 ### Gradle
@@ -36,7 +36,7 @@ Add the dependency below to your **module**'s `build.gradle.kts` file:
 
 ```gradle
 dependencies {
-    implementation("com.github.skydoves:firebase-android-ktx:0.1.0")
+    implementation("com.github.skydoves:firebase-database-ktx:0.1.0")
     
     // if you're using Version Catalog
     implementation(libs.firebase.database.ktx)
