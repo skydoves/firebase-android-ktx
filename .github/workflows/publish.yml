@@ -23,7 +23,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Release build
-        run: ./gradlew assemble --scan -x
+        run: ./gradlew assemble --scan
 
       - name: Publish to MavenCentral
         run: |
