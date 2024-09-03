@@ -1,0 +1,70 @@
+public abstract class com/skydoves/firebase/database/ktx/ChildState {
+}
+
+public final class com/skydoves/firebase/database/ktx/ChildState$ChildAdded : com/skydoves/firebase/database/ktx/ChildState {
+	public fun <init> (Ljava/lang/Object;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/Object;Ljava/lang/String;)Lcom/skydoves/firebase/database/ktx/ChildState$ChildAdded;
+	public static synthetic fun copy$default (Lcom/skydoves/firebase/database/ktx/ChildState$ChildAdded;Ljava/lang/Object;Ljava/lang/String;ILjava/lang/Object;)Lcom/skydoves/firebase/database/ktx/ChildState$ChildAdded;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPreviousChildName ()Ljava/lang/String;
+	public final fun getValue ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/skydoves/firebase/database/ktx/ChildState$ChildCanceled : com/skydoves/firebase/database/ktx/ChildState {
+	public fun <init> (Lcom/google/firebase/database/DatabaseError;)V
+	public final fun component1 ()Lcom/google/firebase/database/DatabaseError;
+	public final fun copy (Lcom/google/firebase/database/DatabaseError;)Lcom/skydoves/firebase/database/ktx/ChildState$ChildCanceled;
+	public static synthetic fun copy$default (Lcom/skydoves/firebase/database/ktx/ChildState$ChildCanceled;Lcom/google/firebase/database/DatabaseError;ILjava/lang/Object;)Lcom/skydoves/firebase/database/ktx/ChildState$ChildCanceled;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getError ()Lcom/google/firebase/database/DatabaseError;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/skydoves/firebase/database/ktx/ChildState$ChildChanged : com/skydoves/firebase/database/ktx/ChildState {
+	public fun <init> (Ljava/lang/Object;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/Object;Ljava/lang/String;)Lcom/skydoves/firebase/database/ktx/ChildState$ChildChanged;
+	public static synthetic fun copy$default (Lcom/skydoves/firebase/database/ktx/ChildState$ChildChanged;Ljava/lang/Object;Ljava/lang/String;ILjava/lang/Object;)Lcom/skydoves/firebase/database/ktx/ChildState$ChildChanged;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPreviousChildName ()Ljava/lang/String;
+	public final fun getValue ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/skydoves/firebase/database/ktx/ChildState$ChildMoved : com/skydoves/firebase/database/ktx/ChildState {
+	public fun <init> (Ljava/lang/Object;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/Object;Ljava/lang/String;)Lcom/skydoves/firebase/database/ktx/ChildState$ChildMoved;
+	public static synthetic fun copy$default (Lcom/skydoves/firebase/database/ktx/ChildState$ChildMoved;Ljava/lang/Object;Ljava/lang/String;ILjava/lang/Object;)Lcom/skydoves/firebase/database/ktx/ChildState$ChildMoved;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPreviousChildName ()Ljava/lang/String;
+	public final fun getValue ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/skydoves/firebase/database/ktx/ChildState$ChildRemoved : com/skydoves/firebase/database/ktx/ChildState {
+	public fun <init> (Ljava/lang/Object;)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun copy (Ljava/lang/Object;)Lcom/skydoves/firebase/database/ktx/ChildState$ChildRemoved;
+	public static synthetic fun copy$default (Lcom/skydoves/firebase/database/ktx/ChildState$ChildRemoved;Ljava/lang/Object;ILjava/lang/Object;)Lcom/skydoves/firebase/database/ktx/ChildState$ChildRemoved;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getValue ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/skydoves/firebase/database/ktx/DatabaseCoroutinesKt {
+	public static final fun flow (Lcom/google/firebase/database/DatabaseReference;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun flowChild (Lcom/google/firebase/database/DatabaseReference;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun flowSingle (Lcom/google/firebase/database/DatabaseReference;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
+}
+
