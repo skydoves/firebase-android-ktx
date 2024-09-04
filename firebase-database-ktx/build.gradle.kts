@@ -54,6 +54,14 @@ android {
   }
 }
 
+kotlin {
+  compilerOptions {
+    freeCompilerArgs.addAll(
+      "-Xexplicit-api=strict",
+    )
+  }
+}
+
 dependencies {
   implementation(platform(libs.firebase.bom))
   api(libs.firebase.database)

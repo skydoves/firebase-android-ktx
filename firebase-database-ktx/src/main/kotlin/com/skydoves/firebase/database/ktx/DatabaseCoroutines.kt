@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import org.json.JSONObject
 
@@ -31,10 +32,10 @@ import org.json.JSONObject
  *
  * The flow emits a [Result], encapsulating both the snapshot value and any potential errors.
  */
-fun <T : Any> DatabaseReference.flow(
+public fun <T : Any> DatabaseReference.flow(
   path: (DataSnapshot) -> DataSnapshot,
   decodeProvider: (String) -> T,
-) = callbackFlow {
+): Flow<Result<T?>> = callbackFlow {
   val listener = object : ValueEventListener {
     override fun onDataChange(snapshot: DataSnapshot) {
       val data = path.invoke(snapshot).serializedValue(decodeProvider)
@@ -55,10 +56,10 @@ fun <T : Any> DatabaseReference.flow(
  *
  * The flow emits a [Result], encapsulating both the snapshot value and any potential errors.
  */
-fun <T : Any> DatabaseReference.flowSingle(
+public fun <T : Any> DatabaseReference.flowSingle(
   path: (DataSnapshot) -> DataSnapshot,
   decodeProvider: (String) -> T,
-) = callbackFlow {
+): Flow<Result<T?>> = callbackFlow {
   val listener = object : ValueEventListener {
     override fun onDataChange(snapshot: DataSnapshot) {
       val data = path.invoke(snapshot).serializedValue(decodeProvider)
@@ -80,10 +81,10 @@ fun <T : Any> DatabaseReference.flowSingle(
  *
  * The flow emits [ChildState], which encapsulates all state changes, including the snapshot value and any errors.
  */
-fun <T : Any> DatabaseReference.flowChild(
+public fun <T : Any> DatabaseReference.flowChild(
   path: (DataSnapshot) -> DataSnapshot,
   decodeProvider: (String) -> T,
-) = callbackFlow {
+): Flow<ChildState<T>> = callbackFlow {
   val listener = object : ChildEventListener {
     override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
       val data = path.invoke(snapshot).serializedValue(decodeProvider)
