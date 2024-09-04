@@ -15,7 +15,7 @@
 <p align="center">🔥 Kotlin & Compose-friendly Firebase extensions designed to help you focus on your business logic. </p>
 
 ## Download
-[![Maven Central](https://img.shields.io/maven-central/v/com.github.skydoves/firebase-android-ktx.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.skydoves%22%20AND%20a:%22firebase-android-ktx%22)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.skydoves/firebase-database-ktx.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.skydoves%22%20AND%20a:%22firebase-database-ktx%22)
 
 ### Version Catalog
 
