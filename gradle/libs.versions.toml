@@ -57,6 +57,7 @@ sandwich = { group = "com.github.skydoves", name = "sandwich-retrofit", version.
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-store = { module = "com.google.firebase:firebase-firestore" }
 firebase-database = { module = "com.google.firebase:firebase-database-ktx" }
+firebase-messaging = { module = "com.google.firebase:firebase-messaging" }
 firebase-remote-config = { module = "com.google.firebase:firebase-config" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

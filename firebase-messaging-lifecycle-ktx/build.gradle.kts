@@ -49,7 +49,7 @@ kotlin {
 
 dependencies {
   implementation(platform(libs.firebase.bom))
-  api(libs.firebase.database)
+  api(libs.firebase.messaging)
 
   implementation(libs.kotlinx.coroutines.android)
 }
