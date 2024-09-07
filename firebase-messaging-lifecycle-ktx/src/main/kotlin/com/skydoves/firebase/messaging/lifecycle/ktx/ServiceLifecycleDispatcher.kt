@@ -15,6 +15,7 @@
  */
 package com.skydoves.firebase.messaging.lifecycle.ktx
 
+import android.app.Service
 import android.os.Handler
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
@@ -77,7 +78,7 @@ internal class ServiceLifecycleDispatcher(provider: LifecycleOwner) {
 
   internal class DispatchRunnable(
     private val registry: LifecycleRegistry,
-    val event: Lifecycle.Event,
+    private val event: Lifecycle.Event,
   ) : Runnable {
     private var wasExecuted = false
 
