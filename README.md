@@ -15,7 +15,10 @@
 
 <p align="center">🔥 Kotlin & Compose-friendly Firebase extensions designed to help you focus on your business logic. </p>
 
-## Download
+## Firebase Realtime Database KTX
+
+The Firebase Realtime Database KTX library allows you to observe changes in the Realtime Database as a Flow, with fully customizable serialization options. This makes it easy to handle data streams while adapting the data format to fit your app's needs, ensuring seamless integration with Kotlin and Jetpack Compose.
+
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.skydoves/firebase-database-ktx.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.skydoves%22%20AND%20a:%22firebase-database-ktx%22)
 
 ### Version Catalog
@@ -37,14 +40,14 @@ Add the dependency below to your **module**'s `build.gradle.kts` file:
 
 ```gradle
 dependencies {
-    implementation("com.github.skydoves:firebase-database-ktx:0.1.0")
+    implementation("com.github.skydoves:firebase-database-ktx:$version")
     
     // if you're using Version Catalog
     implementation(libs.firebase.database.ktx)
 }
 ```
 
-## Firebase Realtime Database KTX
+### The Problem
 
 The [Firebase Realtime Database](https://firebase.google.com/docs/database) is primarily based on Java and callback listeners, making it less compatible with Coroutines and Jetpack Compose. Furthermore, since it returns snapshot values in non-JSON formats, handling objects and implementing custom serialization solutions can be challenging, as shown in the example below:
 
@@ -165,6 +168,48 @@ when (childState) {
   is ChildState.ChildRemoved -> ..
   is ChildState.ChildCanceled -> ..
   else -> ..
+}
+```
+
+## Firebase Messaging Lifecycle KTX
+
+The Firebase Messaging Lifecycle KTX extension allows you to implement a lifecycle-aware [FirebaseMessagingService](https://firebase.google.com/docs/reference/android/com/google/firebase/messaging/FirebaseMessagingService), enabling you to manage and cancel coroutine scopes based on the service’s lifecycle. This is especially useful when you need to send a refreshed token to the server in the [onNewToken](https://firebase.google.com/docs/reference/android/com/google/firebase/messaging/FirebaseMessagingService#onNewToken(java.lang.String)) method, ensuring that the coroutine scope is properly handled and preventing potential memory leaks from continuing to run after the service is no longer need to be actived.
+
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.skydoves/firebase-database-ktx.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.skydoves%22%20AND%20a:%22firebase-database-ktx%22)
+
+### Gradle
+Add the dependency below to your **module**'s `build.gradle.kts` file:
+
+```gradle
+dependencies {
+    implementation("com.github.skydoves:firebase-messaging-lifecycle-ktx:$version")
+}
+```
+
+### LifecycleAwareFirebaseMessagingService
+
+LifecycleAwareFirebaseMessagingService is a lifecycle-aware version of [FirebaseMessagingService], designed to manage tasks in alignment with the service's lifecycle. For instance, you can send a token to your backend in the `onNewToken` method using the `lifecycleOwner.lifecycleScope.launch` function. This ensures the coroutine scope is automatically canceled when the service lifecycle changes, preventing any unintended background tasks from continuing to run.
+
+```kotlin
+class AppFirebaseMessagingService : LifecycleAwareFirebaseMessagingService() {
+  
+  override fun onNewToken(token: String) {
+    super.onNewToken(token)
+    lifecycleScope.launch {
+      // send the token to the server
+      ..
+    }
+  }
+
+  override fun onMessageReceived(message: RemoteMessage) {
+    super.onMessageReceived(message)
+    Log.d(APP_LOG_TAG, "FCMService#onMessageRec onMessageReceived: ${message.data}")
+  }
+
+  override fun onDestroy() {
+    super.onDestroy()
+    Log.d(APP_LOG_TAG, "FCMService#onDestroy onDestroy")
+  }
 }
 ```
 

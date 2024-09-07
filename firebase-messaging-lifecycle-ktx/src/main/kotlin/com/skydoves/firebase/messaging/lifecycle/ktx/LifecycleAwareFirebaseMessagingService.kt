@@ -21,10 +21,17 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import com.google.firebase.messaging.FirebaseMessagingService
 
+/**
+ * LifecycleAwareFirebaseMessagingService is a lifecycle-aware version of [FirebaseMessagingService],
+ * designed to manage tasks in alignment with the service's [lifecycle].
+ *
+ * For instance, you can send a token to your backend in the [onNewToken] method using the
+ * `lifecycleOwner.lifecycleScope.launch` function. This ensures the coroutine scope is automatically canceled
+ * when the service lifecycle changes, preventing any unintended background tasks from continuing to run.
+ */
 @SuppressLint("MissingFirebaseInstanceTokenRefresh")
 public open class LifecycleAwareFirebaseMessagingService :
-  FirebaseMessagingService(),
-  LifecycleOwner {
+  FirebaseMessagingService(), LifecycleOwner {
   private val dispatcher = ServiceLifecycleDispatcher(this@LifecycleAwareFirebaseMessagingService)
 
   override val lifecycle: Lifecycle
