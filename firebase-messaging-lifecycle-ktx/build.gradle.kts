@@ -52,6 +52,7 @@ dependencies {
   api(libs.firebase.messaging)
 
   implementation(libs.kotlinx.coroutines.android)
+  implementation(libs.androidx.lifecycle.runtime)
   androidTestImplementation(libs.androidx.test.runner)
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)

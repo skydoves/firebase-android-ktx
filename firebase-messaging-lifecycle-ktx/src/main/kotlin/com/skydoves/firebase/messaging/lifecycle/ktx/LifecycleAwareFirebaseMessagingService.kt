@@ -11,9 +11,8 @@ public open class LifecycleAwareFirebaseMessagingService : FirebaseMessagingServ
   LifecycleOwner {
   private val dispatcher = ServiceLifecycleDispatcher(this@LifecycleAwareFirebaseMessagingService)
 
-  override fun getLifecycle(): Lifecycle {
-    return dispatcher.lifecycle
-  }
+  override val lifecycle: Lifecycle
+    get() = dispatcher.lifecycle
 
   override fun onCreate() {
     dispatcher.onServicePreSuperOnCreate()

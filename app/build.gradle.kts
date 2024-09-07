@@ -61,15 +61,19 @@ secrets {
 dependencies {
   // modules
   implementation(project(":firebase-database-ktx"))
+  implementation(project(":firebase-messaging-lifecycle-ktx"))
 
+  implementation(platform(libs.firebase.bom))
   implementation(libs.androidx.activity.compose)
   implementation(libs.androidx.compose.ui)
   implementation(libs.androidx.compose.material3)
   implementation(libs.androidx.compose.foundation)
   implementation(libs.androidx.compose.runtime)
   implementation(libs.androidx.compose.ui.tooling.preview)
+  implementation(libs.androidx.lifecycle.runtime)
   implementation(libs.androidx.lifecycle.runtimeCompose)
   implementation(libs.androidx.lifecycle.viewModelCompose)
+  implementation(libs.androidx.lifecycle.process)
   debugImplementation(libs.androidx.compose.ui.tooling)
 
   implementation(libs.kotlinx.serialization.json)
