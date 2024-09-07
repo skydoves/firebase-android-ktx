@@ -77,7 +77,7 @@ data class Post(
     var author: String? = "",
     var title: String? = "",
 ) {
-      @Exclude
+    @Exclude
     fun toMap(): Map<String, Any?> {
         return mapOf(
             "uid" to uid,
