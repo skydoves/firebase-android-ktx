@@ -191,7 +191,7 @@ dependencies {
 
 ### LifecycleAwareFirebaseMessagingService
 
-`LifecycleAwareFirebaseMessagingService` is a lifecycle-aware version of [FirebaseMessagingService], designed to manage tasks in alignment with the service's lifecycle. For instance, you can send a token to your backend in the `onNewToken` method using the `lifecycleOwner.lifecycleScope.launch` function. This ensures the coroutine scope is automatically canceled when the service lifecycle changes, preventing any unintended background tasks from continuing to run.
+`LifecycleAwareFirebaseMessagingService` is a lifecycle-aware version of [FirebaseMessagingService](https://firebase.google.com/docs/reference/android/com/google/firebase/messaging/FirebaseMessagingService), designed to manage tasks in alignment with the service's lifecycle. For instance, you can send a token to your backend in the `onNewToken` method using the `lifecycleOwner.lifecycleScope.launch` function. This ensures the coroutine scope is automatically canceled when the service lifecycle changes, preventing any unintended background tasks from continuing to run.
 
 ```kotlin
 class AppFirebaseMessagingService : LifecycleAwareFirebaseMessagingService() {
