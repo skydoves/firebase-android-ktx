@@ -1,0 +1,9 @@
+public class com/skydoves/firebase/messaging/lifecycle/ktx/LifecycleAwareFirebaseMessagingService : com/google/firebase/messaging/FirebaseMessagingService, androidx/lifecycle/LifecycleOwner {
+	public fun <init> ()V
+	public fun getLifecycle ()Landroidx/lifecycle/Lifecycle;
+	public fun onCreate ()V
+	public fun onDestroy ()V
+	public fun onRebind (Landroid/content/Intent;)V
+	public fun onStart (Landroid/content/Intent;I)V
+}
+
