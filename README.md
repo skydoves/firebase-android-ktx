@@ -28,7 +28,7 @@ If you're using Version Catalog, you can configure the dependency by adding it t
 ```toml
 [versions]
 #...
-firebaseKtx = "0.1.0"
+firebaseKtx = "0.2.0"
 
 [libraries]
 #...
