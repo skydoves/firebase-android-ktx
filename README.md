@@ -15,6 +15,9 @@
 
 <p align="center">🔥 Kotlin & Compose-friendly Firebase extensions designed to help you focus on your business logic. </p>
 
+- **Firebase Realtime Database KTX**: Enables observing snapshot data changes as Kotlin Flow with fully customizable serialization, making it easy to adapt the data format to your application's needs.
+- **Firebase Messaging Lifecycle KTX**: Provides a lifecycle-aware version of `FirebaseMessagingService`, allowing you to cancel coroutine tasks within the `onNewToken` method in accordance with the service's lifecycle, ensuring efficient resource management and preventing leaks.
+
 ## Firebase Realtime Database KTX
 
 The Firebase Realtime Database KTX library allows you to observe changes in the Realtime Database as a Flow, with fully customizable serialization options. This makes it easy to handle data streams while adapting the data format to fit your app's needs, ensuring seamless integration with Kotlin and Jetpack Compose.
@@ -188,7 +191,7 @@ dependencies {
 
 ### LifecycleAwareFirebaseMessagingService
 
-LifecycleAwareFirebaseMessagingService is a lifecycle-aware version of [FirebaseMessagingService], designed to manage tasks in alignment with the service's lifecycle. For instance, you can send a token to your backend in the `onNewToken` method using the `lifecycleOwner.lifecycleScope.launch` function. This ensures the coroutine scope is automatically canceled when the service lifecycle changes, preventing any unintended background tasks from continuing to run.
+`LifecycleAwareFirebaseMessagingService` is a lifecycle-aware version of [FirebaseMessagingService], designed to manage tasks in alignment with the service's lifecycle. For instance, you can send a token to your backend in the `onNewToken` method using the `lifecycleOwner.lifecycleScope.launch` function. This ensures the coroutine scope is automatically canceled when the service lifecycle changes, preventing any unintended background tasks from continuing to run.
 
 ```kotlin
 class AppFirebaseMessagingService : LifecycleAwareFirebaseMessagingService() {
