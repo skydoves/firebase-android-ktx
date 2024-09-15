@@ -67,5 +67,5 @@ dependencies {
   api(libs.firebase.messaging)
 
   implementation(libs.kotlinx.coroutines.android)
-  implementation(libs.androidx.lifecycle.runtime)
+  implementation(libs.androidx.lifecycle.common)
 }
