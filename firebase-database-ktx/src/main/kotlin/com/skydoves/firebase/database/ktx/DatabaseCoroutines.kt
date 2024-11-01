@@ -128,7 +128,7 @@ public fun <T : Any> DatabaseReference.flowChild(
 
 public fun <T : Any> DatabaseReference.flowList(
   path: (DataSnapshot) -> DataSnapshot,
-  decodeProvider: (String) -> T
+  decodeProvider: (String) -> T,
 ): Flow<Result<List<T?>>> = callbackFlow {
   val listener = object : ValueEventListener {
     override fun onDataChange(snapshot: DataSnapshot) {

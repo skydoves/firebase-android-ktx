@@ -65,6 +65,7 @@ public final class com/skydoves/firebase/database/ktx/ChildState$ChildRemoved : 
 public final class com/skydoves/firebase/database/ktx/DatabaseCoroutinesKt {
 	public static final fun flow (Lcom/google/firebase/database/DatabaseReference;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
 	public static final fun flowChild (Lcom/google/firebase/database/DatabaseReference;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun flowList (Lcom/google/firebase/database/DatabaseReference;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
 	public static final fun flowSingle (Lcom/google/firebase/database/DatabaseReference;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
 }
 
