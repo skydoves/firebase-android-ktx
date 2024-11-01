@@ -126,6 +126,32 @@ public fun <T : Any> DatabaseReference.flowChild(
   awaitClose { removeEventListener(listener) }
 }
 
+public fun <T : Any> DatabaseReference.flowList(
+  path: (DataSnapshot) -> DataSnapshot,
+  decodeProvider: (String) -> T
+): Flow<Result<List<T?>>> = callbackFlow {
+  val listener = object : ValueEventListener {
+    override fun onDataChange(snapshot: DataSnapshot) {
+      val children = path.invoke(snapshot).children
+      val result = mutableListOf<T?>()
+
+      for (data in children) {
+        result.add(data.serializedValue(decodeProvider))
+      }
+
+      trySend(Result.success(result))
+    }
+
+    override fun onCancelled(error: DatabaseError) {
+      trySend(Result.failure(error.toException()))
+    }
+  }
+
+  addValueEventListener(listener)
+
+  awaitClose { removeEventListener(listener) }
+}
+
 private fun <T> DataSnapshot.serializedValue(
   decodeProvider: (String) -> T,
 ): T? {
