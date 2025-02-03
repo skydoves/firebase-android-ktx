@@ -180,7 +180,7 @@ Realtime Database provides [support for retrieving and querying data efficiently
 
 - **Query.flow()**: Serializes snapshot values from the Realtime Database and observes them as a Flow, enabling real-time updates from a `Query` instance.
 - **Query.flowSingle()**: Functions similarly to `Query.flow()`, but emits the value only once, regardless of dynamic changes. It leverages `addListenerForSingleValueEvent` instead of `addValueEventListener`, making it ideal for one-time data retrieval.
-- **DatabaseReference.flowSingle()**: Observes all child node changes, including additions, modifications, deletions, movements, and cancellations. It emits `ChildState`, encapsulating state changes, snapshot values, and any potential errors.
+- **Query.flowSingle()**: Observes all child node changes, including additions, modifications, deletions, movements, and cancellations. It emits `ChildState`, encapsulating state changes, snapshot values, and any potential errors.
 
 ## Firebase Messaging Lifecycle KTX
 
