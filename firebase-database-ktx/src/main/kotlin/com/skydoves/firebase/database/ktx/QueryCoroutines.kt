@@ -18,18 +18,18 @@ package com.skydoves.firebase.database.ktx
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
 /**
- * Returns a flow that emits a target object [T] from the specified [path] within the [DatabaseReference].
+ * Returns a flow that emits a target object [T] from the specified [path] within the [Query].
  *
  * The flow emits a [Result], encapsulating both the snapshot value and any potential errors.
  */
-public fun <T : Any> DatabaseReference.flow(
+public fun <T : Any> Query.flow(
   path: (DataSnapshot) -> DataSnapshot,
   decodeProvider: (String) -> T,
 ): Flow<Result<T?>> = callbackFlow {
@@ -49,11 +49,11 @@ public fun <T : Any> DatabaseReference.flow(
 }
 
 /**
- * Returns a flow that emits only once a target object [T] from the specified [path] within the [DatabaseReference].
+ * Returns a flow that emits only once a target object [T] from the specified [path] within the [Query].
  *
  * The flow emits a [Result], encapsulating both the snapshot value and any potential errors.
  */
-public fun <T : Any> DatabaseReference.flowSingle(
+public fun <T : Any> Query.flowSingle(
   path: (DataSnapshot) -> DataSnapshot,
   decodeProvider: (String) -> T,
 ): Flow<Result<T?>> = callbackFlow {
@@ -74,11 +74,11 @@ public fun <T : Any> DatabaseReference.flowSingle(
 
 /**
  * Returns a flow that emits a target object [T] based on changes to the child nodes
- * at the specified [path] within the [DatabaseReference].
+ * at the specified [path] within the [Query].
  *
  * The flow emits [ChildState], which encapsulates all state changes, including the snapshot value and any errors.
  */
-public fun <T : Any> DatabaseReference.flowChild(
+public fun <T : Any> Query.flowChild(
   path: (DataSnapshot) -> DataSnapshot,
   decodeProvider: (String) -> T,
 ): Flow<ChildState<T>> = callbackFlow {
@@ -125,11 +125,11 @@ public fun <T : Any> DatabaseReference.flowChild(
 
 /**
  * Returns a flow that emits a list of target object [T] based on changes to the child nodes
- * at the specified [path] within the [DatabaseReference].
+ * at the specified [path] within the [Query].
  *
  * The flow emits [ChildState], which encapsulates all state changes, including the snapshot value and any errors.
  */
-public fun <T : Any> DatabaseReference.flowList(
+public fun <T : Any> Query.flowList(
   path: (DataSnapshot) -> DataSnapshot,
   decodeProvider: (String) -> T,
 ): Flow<Result<List<T?>>> = callbackFlow {

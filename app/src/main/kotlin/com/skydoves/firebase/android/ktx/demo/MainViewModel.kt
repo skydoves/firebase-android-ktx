@@ -91,4 +91,42 @@ class MainViewModel : ViewModel() {
     started = SharingStarted.WhileSubscribed(5000),
     initialValue = null,
   )
+
+  val orderedKeyTimelineUi = database.orderByKey().flow<TimelineUi>(
+    path = { dataSnapshot ->
+      dataSnapshot.child("timeline")
+    },
+    decodeProvider = { jsonString ->
+      json.decodeFromString(jsonString)
+    },
+  ).flatMapLatest { result ->
+    if (result.isSuccess) {
+      flowOf(result.getOrNull())
+    } else {
+      throw RuntimeException("parsing error!")
+    }
+  }.stateIn(
+    scope = viewModelScope,
+    started = SharingStarted.WhileSubscribed(5000),
+    initialValue = null,
+  )
+
+  val orderedTimelineUi = database.orderByChild("order").flow<TimelineUi>(
+    path = { dataSnapshot ->
+      dataSnapshot.child("timeline")
+    },
+    decodeProvider = { jsonString ->
+      json.decodeFromString(jsonString)
+    },
+  ).flatMapLatest { result ->
+    if (result.isSuccess) {
+      flowOf(result.getOrNull())
+    } else {
+      throw RuntimeException("parsing error!")
+    }
+  }.stateIn(
+    scope = viewModelScope,
+    started = SharingStarted.WhileSubscribed(5000),
+    initialValue = null,
+  )
 }
