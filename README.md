@@ -93,9 +93,7 @@ data class Post(
 }
 ```
 
-### DatabaseReference Extensions
-
-#### 1. DatabaseReference.flow()
+### 1. DatabaseReference.flow()
 
 You can easily serialize snapshot values from the Realtime Database and observe them as a Flow by using the `DatabaseReference.flow()` extension, as shown in the example below:
 
