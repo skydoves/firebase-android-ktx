@@ -36,6 +36,8 @@ class MainActivity : ComponentActivity() {
       val timelineUI by viewModel.timelineUi.collectAsStateWithLifecycle()
       val timelineUIOneShot by viewModel.timelineUiOneShot.collectAsStateWithLifecycle()
       val childState by viewModel.childState.collectAsStateWithLifecycle()
+      val orderedKeyTimelineUi by viewModel.orderedKeyTimelineUi.collectAsStateWithLifecycle()
+      val orderedTimelineUi by viewModel.orderedTimelineUi.collectAsStateWithLifecycle()
 
       Text(text = timelineUI.toString())
 
@@ -49,6 +51,14 @@ class MainActivity : ComponentActivity() {
 
       LaunchedEffect(childState) {
         Log.e("Test", "childState: $childState")
+      }
+
+      LaunchedEffect(orderedKeyTimelineUi) {
+        Log.e("Test", "orderedKeyTimelineUi: $orderedKeyTimelineUi")
+      }
+
+      LaunchedEffect(orderedTimelineUi) {
+        Log.e("Test", "orderedTimelineUi: $orderedTimelineUi")
       }
     }
   }
