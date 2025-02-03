@@ -93,7 +93,9 @@ data class Post(
 }
 ```
 
-### DatabaseReference.flow()
+### DatabaseReference Extensions
+
+#### 1. DatabaseReference.flow()
 
 You can easily serialize snapshot values from the Realtime Database and observe them as a Flow by using the `DatabaseReference.flow()` extension, as shown in the example below:
 
@@ -134,11 +136,11 @@ Now, you can safely observe it in Jetpack Compose using `collectAsStateWithLifec
 val timelineUI by viewModel.timelineUi.collectAsStateWithLifecycle()
 ```
 
-### DatabaseReference.flowSingle()
+### 2. DatabaseReference.flowSingle()
 
 This functions similarly to `DatabaseReference.flow()`, but it only emits the value once, even if the value changes dynamically. It uses `addListenerForSingleValueEvent` instead of `addValueEventListener`. So, it's suitable for the one-shot flow.
 
-### DatabaseReference.flowChild()
+### 3. DatabaseReference.flowChild()
 
 This observes all changes in the child nodes of the Realtime Database, including additions, modifications, deletions, movements, and cancellations. The flow emits `ChildState`, which encapsulates the state changes along with the snapshot value and any errors.
 
@@ -173,6 +175,14 @@ when (childState) {
   else -> ..
 }
 ```
+
+### Query Extensions
+
+Realtime Database provides [support for retrieving and querying data efficiently](https://firebase.google.com/docs/database/admin/retrieve-data). It allows data ordering and simple queries using functions like `orderByKey()`, `orderByValue()`, `orderByPriority()`, and `orderByChild(..)`, all of which return a `Query` instance. The following extensions enhance data retrieval by integrating seamlessly with Kotlin's Flow:
+
+- **Query.flow()**: Serializes snapshot values from the Realtime Database and observes them as a Flow, enabling real-time updates from a `Query` instance.
+- **Query.flowSingle()**: Functions similarly to `Query.flow()`, but emits the value only once, regardless of dynamic changes. It leverages `addListenerForSingleValueEvent` instead of `addValueEventListener`, making it ideal for one-time data retrieval.
+- **DatabaseReference.flowSingle()**: Observes all child node changes, including additions, modifications, deletions, movements, and cancellations. It emits `ChildState`, encapsulating state changes, snapshot values, and any potential errors.
 
 ## Firebase Messaging Lifecycle KTX
 
